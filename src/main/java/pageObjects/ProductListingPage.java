@@ -1,6 +1,5 @@
 package pageObjects;
 
-import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +9,8 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import selenium.Wait;
 
+import java.util.List;
+
 public class ProductListingPage {
     WebDriver driver;
 
@@ -18,23 +19,19 @@ public class ProductListingPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(how = How.CSS, using = "button.single_add_to_cart_button")
-    private WebElement btn_AddToCart;
 
-    @FindAll(@FindBy(how = How.CSS, using = ".noo-product-inner"))
+    // ELEMENTS //
+    @FindAll(@FindBy(how = How.XPATH, using = "//span[contains(@class, 'a-size-medium a-color-base a-text-normal')]"))
     private List<WebElement> prd_List;
 
-    public void clickOn_AddToCart() {
-        btn_AddToCart.click();
-        Wait.untilJqueryIsDone(driver);
-    }
 
+    // METHODS //
+    public String getProductName(int productNumber) {
+        return prd_List.get(productNumber).getText();
+    }
     public void select_Product(int productNumber) {
         prd_List.get(productNumber).click();
-    }
-
-    public String getProductName(int productNumber) {
-        return prd_List.get(productNumber).findElement(By.cssSelector("h3")).getText();
+        Wait.untilJqueryIsDone(driver);
     }
 
 }

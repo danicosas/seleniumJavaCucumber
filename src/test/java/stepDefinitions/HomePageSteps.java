@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import pageObjects.HomePage;
@@ -20,9 +21,13 @@ public class HomePageSteps {
         homePage.navigateTo_HomePage();
     }
 
-    @When("^he search for \"([^\"]*)\"$")
+    @When("^search for \"([^\"]*)\"$")
     public void he_search_for(String product)  {
         homePage.perform_Search(product);
     }
 
+    @And("^go to the cart$")
+    public void goToTheCart() {
+        homePage.goToTheCart();
+    }
 }

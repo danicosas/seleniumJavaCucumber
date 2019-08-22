@@ -1,10 +1,13 @@
 package pageObjects;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+
+import static java.lang.Integer.parseInt;
 
 public class CartPage {
     WebDriver driver;
@@ -14,21 +17,22 @@ public class CartPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(how = How.CSS, using = ".cart-button")
-    private WebElement btn_Cart;
 
-    @FindBy(how = How.CSS, using = ".checkout-button.alt")
-    private WebElement btn_ContinueToCheckout;
+    // ELEMENTS //
+    @FindBy(how = How.XPATH, using = "//span[@class='a-size-medium']/span[1]")
+    private WebElement total_Products;
+    @FindBy(how = How.XPATH, using = "//span[@class='a-size-medium']/span[2]/span")
+    private WebElement total_Price;
 
 
-    public void clickOn_Cart() {
-        btn_Cart.click();
+    // METHODS //
+    public void checkUnits(String units) {
+        Assert.assertTrue(total_Products.getText().contains(Integer.toString(parseInt(units))));
     }
 
-    public void clickOn_ContinueToCheckout(){
-        btn_ContinueToCheckout.click();
-        try { Thread.sleep(5000);}
-        catch (InterruptedException e) {}
+    public void checkTotalPrice(String units, String price) {
+        double totalPrice = Double.parseDouble(units) * Double.parseDouble(price);
+        Assert.assertTrue(total_Price.getText().contains(Double.toString(totalPrice).replace(".",",")));
     }
 
 }

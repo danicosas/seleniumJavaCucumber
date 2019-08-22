@@ -1,7 +1,8 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.java.en.When;
+import cucumber.api.java.en.Then;
+import enums.Context;
 import pageObjects.CartPage;
 
 public class CartPageSteps {
@@ -14,10 +15,9 @@ public class CartPageSteps {
         cartPage = testContext.getPageObjectManager().getCartPage();
     }
 
-    @When("^moves to checkout from mini cart$")
-    public void moves_to_checkout_from_mini_cart(){
-        cartPage.clickOn_Cart();
-        cartPage.clickOn_ContinueToCheckout();
+    @Then("^check \"([^\"]*)\" units and total price$")
+    public void checkUnitsAndTotalPrice(String units) throws Throwable {
+        cartPage.checkUnits(units);
+        cartPage.checkTotalPrice(units, (testContext.scenarioContext.getContext(Context.PRODUCT_PRICE)).toString().replace(",", "."));
     }
-
 }
