@@ -10,5 +10,5 @@ Feature: Feature01
 
         Examples:
             | product | quantity |
-            | xiaomi mi 9 se | 2 |
-            | honor 10 64 | 4 |
+            | xiaomi mi 9 se | 3 |
+            | lg tv 32 | 2 |
