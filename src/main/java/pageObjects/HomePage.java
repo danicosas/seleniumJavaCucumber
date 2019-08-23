@@ -1,13 +1,11 @@
 package pageObjects;
 
+import managers.FileReaderManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-
-import managers.FileReaderManager;
-import selenium.Wait;
 
 public class HomePage {
     WebDriver driver;

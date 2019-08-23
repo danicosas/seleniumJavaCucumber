@@ -1,9 +1,14 @@
 Feature: Feature01
 
-    Scenario: Customer place an order by purchasing an item from search
+    Scenario Outline: Customer place an order by purchasing an item from search
         Given user is on Home Page
-        When search for "xiaomi mi 9 se"
+        When search for "<product>"
         And click at the first item
-        And add to cart "2" units
+        And add to cart "<quantity>" units
         And go to the cart
-        Then check "2" units and total price
+        Then check "<quantity>" units and total price
+
+        Examples:
+            | product | quantity |
+            | xiaomi mi 9 se | 2 |
+            | honor 10 64 | 4 |

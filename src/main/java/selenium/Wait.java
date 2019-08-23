@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import managers.FileReaderManager;
 
-
 public class Wait {
 
     public static void untilJqueryIsDone(WebDriver driver){

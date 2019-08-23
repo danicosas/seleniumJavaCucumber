@@ -29,7 +29,6 @@ public class CartPage {
     public void checkUnits(String units) {
         Assert.assertTrue(total_Products.getText().contains(Integer.toString(parseInt(units))));
     }
-
     public void checkTotalPrice(String units, String price) {
         double totalPrice = Double.parseDouble(units) * Double.parseDouble(price);
         Assert.assertTrue(total_Price.getText().contains(Double.toString(totalPrice).replace(".",",")));
